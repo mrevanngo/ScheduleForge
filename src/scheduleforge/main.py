@@ -222,7 +222,8 @@ def go(
         else:
             gym_info = f"Gym: {workout}"
 
-    day_label = f"{dow}, {datetime.now().strftime('%B %-d')}"
+    now = datetime.now()
+    day_label = f"{dow}, {now.strftime('%B')} {now.day}"
 
     # Show sleep-deprived warning banner if flagged
     if deprived:
