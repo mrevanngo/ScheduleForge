@@ -20,6 +20,7 @@ uv add git+https://github.com/mrevanngo/ScheduleForge.git
 ### As a Global Tool
 ```bash
 uv tool install git+https://github.com/mrevanngo/ScheduleForge.git
+```
 
 ## Usage
 
