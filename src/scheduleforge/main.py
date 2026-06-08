@@ -390,7 +390,6 @@ def setup():
     gym_days = questionary.checkbox(
         "Which days do you go to the gym?",
         choices=valid_days,
-        default=[day for day in profile.gym_days if day in valid_days],
     ).ask()
     if gym_days:
         profile.gym_days = gym_days
@@ -409,7 +408,6 @@ def setup():
     swim_days = questionary.checkbox(
         "Which days do you swim?",
         choices=valid_days,
-        default=[day for day in profile.swim_days if day in valid_days],
     ).ask()
     if swim_days is not None:
         profile.swim_days = swim_days
@@ -417,23 +415,39 @@ def setup():
     run_days = questionary.checkbox(
         "Which days do you run?",
         choices=valid_days,
-        default=[day for day in profile.run_days if day in valid_days],
     ).ask()
     if run_days is not None:
         profile.run_days = run_days
+
+    swim_dur_str = questionary.text(f"Swim session duration in minutes [{profile.swim_duration}]:").ask()
+    if swim_dur_str and swim_dur_str.strip().isdigit():
+        profile.swim_duration = int(swim_dur_str.strip())
+
+    run_dur_str = questionary.text(f"Run session duration in minutes [{profile.run_duration}]:").ask()
+    if run_dur_str and run_dur_str.strip().isdigit():
+        profile.run_duration = int(run_dur_str.strip())
 
     # --- Internship ---
     console.print("\n[bold cyan]Step 5: Internship Applications[/]")
     intern_days = questionary.checkbox(
         "Which days do you want to block time for internship apps?",
         choices=valid_days,
-        default=[day for day in profile.internship_days if day in valid_days],
     ).ask()
     if intern_days is not None:
         profile.internship_days = intern_days
 
+    internship_dur_str = questionary.text(f"Internship application block duration in minutes [{profile.internship_block}]:").ask()
+    if internship_dur_str and internship_dur_str.strip().isdigit():
+        profile.internship_block = int(internship_dur_str.strip())
+
+    # --- Day Trading ---
+    console.print("\n[bold cyan]Step 6: Day Trading[/]")
+    market_dur_str = questionary.text(f"Market watch duration in minutes [{profile.market_watch_duration}]:").ask()
+    if market_dur_str and market_dur_str.strip().isdigit():
+        profile.market_watch_duration = int(market_dur_str.strip())
+
     # --- Sleep ---
-    console.print("\n[bold cyan]Step 6: Sleep[/]")
+    console.print("\n[bold cyan]Step 7: Sleep[/]")
     sleep_str = questionary.text(
         f"Target sleep time [{_fmt_time(profile.preferred_sleep_time)}]:"
     ).ask()
