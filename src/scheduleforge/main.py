@@ -386,10 +386,11 @@ def setup():
 
     # --- Gym ---
     console.print("\n[bold cyan]Step 3: Gym Schedule[/]")
+    valid_days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     gym_days = questionary.checkbox(
         "Which days do you go to the gym?",
-        choices=["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-        default=profile.gym_days,
+        choices=valid_days,
+        default=[day for day in profile.gym_days if day in valid_days],
     ).ask()
     if gym_days:
         profile.gym_days = gym_days
@@ -407,16 +408,16 @@ def setup():
     console.print("\n[bold cyan]Step 4: Triathlon Training[/]")
     swim_days = questionary.checkbox(
         "Which days do you swim?",
-        choices=["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-        default=profile.swim_days,
+        choices=valid_days,
+        default=[day for day in profile.swim_days if day in valid_days],
     ).ask()
     if swim_days is not None:
         profile.swim_days = swim_days
 
     run_days = questionary.checkbox(
         "Which days do you run?",
-        choices=["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-        default=profile.run_days,
+        choices=valid_days,
+        default=[day for day in profile.run_days if day in valid_days],
     ).ask()
     if run_days is not None:
         profile.run_days = run_days
@@ -425,8 +426,8 @@ def setup():
     console.print("\n[bold cyan]Step 5: Internship Applications[/]")
     intern_days = questionary.checkbox(
         "Which days do you want to block time for internship apps?",
-        choices=["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-        default=profile.internship_days,
+        choices=valid_days,
+        default=[day for day in profile.internship_days if day in valid_days],
     ).ask()
     if intern_days is not None:
         profile.internship_days = intern_days
