@@ -4,11 +4,23 @@ ScheduleForge is an adaptive daily schedule optimizer for busy student-athlete-t
 
 ## Installation
 
+First, install `uv` via pip:
+
 ```bash
-uv add "git+https://github.com/<your-username>/scheduleforge.git"
+pip install uv
 ```
 
-Requires Python 3.12+ and [uv](https://docs.astral.sh/uv/).
+Next, install **ScheduleForge** using one of the following methods:
+
+### As a Project Dependency
+```bash
+uv add git+https://github.com/mrevanngo/ScheduleForge.git
+```
+
+### As a Global Tool
+```bash
+uv tool install git+https://github.com/mrevanngo/ScheduleForge.git
+```
 
 ## Usage
 
